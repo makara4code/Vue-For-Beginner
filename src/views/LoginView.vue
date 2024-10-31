@@ -16,7 +16,7 @@ const errorMessage = ref('');
 
 const login = async () => {
     try {
-        await authStore.login({ username: email.value, password: password.value });
+        await authStore.login({ email: email.value, password: password.value });
         router.push('/dashboard');
     } catch (error) {
         errorMessage.value = 'Login failed. Please check your credentials and try again.';

@@ -4,7 +4,6 @@ import { useAuthStore } from '@/stores/auth';
 import { RefreshTokenResponse } from '@/types/api';
 
 const axiosInstance = axios.create({
-  baseURL: '/', // Use the proxy path
   timeout: 10000, // Request timeout
   headers: {
     'Content-Type': 'application/json', // Set the Content-Type header to application/json

@@ -21,7 +21,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://api.example.com', // Replace with your API base URL
+        target: 'https://makara-directus.up.railway.app', // Replace with your API base URL
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },

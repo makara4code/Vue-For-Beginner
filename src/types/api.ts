@@ -15,9 +15,9 @@ export interface User {
   
   // Login response payload
   export interface LoginResponse {
-    user: User;
-    token: string;
-    refreshToken: string;
+    access_token: string;
+    refresh_token: string;
+    expires: number;
   }
   
   // Refresh token request payload

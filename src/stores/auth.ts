@@ -16,12 +16,12 @@ export const useAuthStore = defineStore('auth', {
     refreshToken: null,
   }),
   actions: {
-    async login(credentials: { username: string; password: string }) {
+    async login(credentials: { email: string; password: string }) {
       try {
-        const response = await axiosInstance.post<LoginResponse>('/login', credentials);
-        this.user = response.data.user;
-        this.token = response.data.token;
-        this.refreshToken = response.data.refreshToken;
+        const response = await axiosInstance.post<{ data: LoginResponse }>('/api/auth/login', credentials);
+        const { access_token, refresh_token } = response.data?.data ?? {}
+        this.token = access_token
+        this.refreshToken = refresh_token
       } catch (error) {
         throw new Error('Login failed');
       }
@@ -44,7 +44,7 @@ export const useAuthStore = defineStore('auth', {
     },
   },
   getters: {
-    isAuthenticated: (state) => !!state.user,
+    isAuthenticated: (state) => !!state.token,
   },
   persist: true, // Enable persistence for this store
 });
