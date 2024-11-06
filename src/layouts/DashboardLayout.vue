@@ -31,6 +31,15 @@ import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { RouterView } from "vue-router";
 import { Sidebar } from "@/components/sidebar"
+import { useAuthStore } from "@/stores/auth";
+import router from "@/router";
+
+const authStore = useAuthStore();
+
+const handleOnLogout = () => {
+  authStore.logout();
+  router.push({ name: "login" })
+}
 </script>
 
 <template>
@@ -139,7 +148,7 @@ import { Sidebar } from "@/components/sidebar"
             <DropdownMenuItem>Settings</DropdownMenuItem>
             <DropdownMenuItem>Support</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Logout</DropdownMenuItem>
+            <DropdownMenuItem @click="handleOnLogout">Logout</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </header>

@@ -9,7 +9,7 @@ import DashboardLayout from "@/layouts/DashboardLayout.vue";
 
 const routes = [
   { path: '/', redirect: '/dashboard' },
-  { path: '/login', component: LoginView },
+  { path: '/login', component: LoginView, name: "login" },
   {
     path: '/',
     meta: { requiresAuth: true },
@@ -31,7 +31,7 @@ router.beforeEach((to, _, next) => {
   const authStore = useAuthStore();
   if (to.meta.requiresAuth && !authStore.isAuthenticated) {
     next('/login');
-  } else if (to.path === '/login' && authStore.isAuthenticated) {
+  } else if (to.path === '/login' && authStore.isAuthenticated && !!authStore.token) {
     next('/dashboard');
   } else {
     next();

@@ -9,6 +9,9 @@ import {
   ShoppingCart,
   Users,
 } from "lucide-vue-next";
+import { Button } from "@/components/ui/button"
+import { Badge } from '../ui/badge';
+import { CardTitle, CardDescription, CardHeader, CardContent, Card } from '../ui/card';
 
 </script>
 
